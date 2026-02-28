@@ -31,7 +31,7 @@ jobs:
       with:
         name: progress-data
         path: ./
-        
+    
     - name: 运行医院联系程序（限时1小时）
       run: |
           echo "开始运行医院联系程序..."
@@ -39,7 +39,7 @@ jobs:
           # 方式 A: 让 Python 不缓冲，并把 stdout/stderr 同时显示并保存到 run.log
           timeout 3600s python -u github_daily_run.py 2>&1 | tee -a run.log || echo "程序运行1小时结束"
           echo "脚本 exit code: $?"
-        env:
+      env:
           PYTHONUNBUFFERED: "1"
         
     - name: 保存进度数据 
